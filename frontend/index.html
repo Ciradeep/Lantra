@@ -144,7 +144,10 @@
       <div class="panel output-panel">
         <div class="panel-header">
           <h2 class="panel-title">🌐 Localized Output</h2>
-          <button class="btn-copy" id="copy-btn" onclick="copyOutput()" style="display:none">📋 Copy</button>
+          <div style="display:flex; gap:0.5rem">
+            <button class="btn-primary" id="reset-btn" onclick="resetUI()" style="display:none; padding: 0.4rem 0.8rem; font-size: 0.85rem; background: var(--surface-color); border: 1px solid var(--border-color);">🔄 Reset</button>
+            <button class="btn-copy" id="copy-btn" onclick="copyOutput()" style="display:none">📋 Copy</button>
+          </div>
         </div>
 
         <div id="output-placeholder" class="output-placeholder">

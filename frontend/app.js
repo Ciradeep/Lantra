@@ -225,6 +225,7 @@ function renderOutput(data) {
   hide("error-state");
   show("output-result");
   show("copy-btn");
+  show("reset-btn");
 
   // Language tag
   const langInfo = LANGUAGES.find(l => l.code === data.target_lang) || {};
@@ -316,6 +317,33 @@ async function copyOutput() {
     btn.textContent = "✅ Copied!";
     setTimeout(() => btn.textContent = "📋 Copy", 2000);
   } catch { /* ignore */ }
+}
+
+// ── Reset UI ──────────────────────────────────────────────────────────────────
+function resetUI() {
+  // Clear inputs
+  document.getElementById("input-text").value = "";
+  document.getElementById("video-file-input").value = "";
+  updateCharCounter(0);
+  
+  // Hide outputs
+  hide("output-result");
+  hide("copy-btn");
+  hide("reset-btn");
+  hide("loading-state");
+  hide("error-state");
+  
+  // Show placeholder
+  show("output-placeholder");
+  
+  // Reset audio
+  const audioEl = document.getElementById("audio-element");
+  if (audioEl) {
+    audioEl.src = "";
+  }
+  
+  // Scroll back to top of input area smoothly
+  document.getElementById("localizer").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 // ── Haptics Player ─────────────────────────────────────────────────────────────
@@ -426,6 +454,7 @@ function setLoadingState(loading) {
     hide("output-result");
     hide("error-state");
     hide("copy-btn");
+    hide("reset-btn");
     show("loading-state");
   } else {
     if (_stepTimer) { clearTimeout(_stepTimer); _stepTimer = null; }
@@ -489,7 +518,7 @@ function show(id) {
   // Restore display based on element role
   const flexIds = new Set(["audio-player", "engine-badge", "meta-detection",
                             "output-result", "loading-state", "error-state"]);
-  const inlineFlex = new Set(["copy-btn", "output-lang-tag"]);
+  const inlineFlex = new Set(["copy-btn", "reset-btn", "output-lang-tag"]);
   if (flexIds.has(id))       { e.style.display = "flex"; }
   else if (inlineFlex.has(id)) { e.style.display = "inline-flex"; }
   else                        { e.style.display = ""; }
