@@ -88,7 +88,7 @@
           <button id="tab-video" class="btn-primary" onclick="switchTab('video')" style="background:var(--card-bg); color:var(--text-1); flex:1; padding: 0.5rem">🎥 Video</button>
         </div>
 
-        <div id="text-input-section">
+        <div id="text-input-section" style="position: relative;">
           <textarea
             id="input-text"
             class="text-area"
@@ -96,6 +96,7 @@
             rows="7"
             maxlength="2000"
           ></textarea>
+          <button id="stt-mic-btn" style="position: absolute; bottom: 35px; right: 15px; background: var(--surface-color, rgba(0, 0, 0, 0.4)); border: 1px solid var(--saffron); color: #fff; width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; z-index: 10;" title="Dictate Text">🎤</button>
           <div class="char-count" id="char-counter-container"><span id="char-counter">0</span> / 2000</div>
         </div>
 

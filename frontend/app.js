@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   wireCharCounter();
   checkAPIStatus();
   wireHapticsPlayer();
+  wireSpeechToText();
 });
 
 // ── Language selector grid ─────────────────────────────────────────────────────
@@ -494,3 +495,74 @@ function show(id) {
   else                        { e.style.display = ""; }
 }
 function hide(id) { const e = el(id); if (e) e.style.display = "none"; }
+
+// ── Text-to-Speech (Dictation) ────────────────────────────────────────────────
+function wireSpeechToText() {
+  const micBtn = document.getElementById("stt-mic-btn");
+  const textArea = document.getElementById("input-text");
+  if (!micBtn || !textArea) return;
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
+    micBtn.style.display = "none"; // Hide if browser doesn't support STT
+    return;
+  }
+
+  const micStyle = document.createElement("style");
+  micStyle.textContent = `
+    @keyframes micPulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 111, 47, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(255, 111, 47, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 111, 47, 0); }
+    }
+  `;
+  document.head.appendChild(micStyle);
+
+  const recognition = new SpeechRecognition();
+  recognition.continuous = false;
+  recognition.interimResults = false;
+  recognition.lang = "en-IN"; // Default to English India
+
+  let isRecording = false;
+
+  recognition.onstart = () => {
+    isRecording = true;
+    micBtn.style.background = "var(--saffron)";
+    micBtn.style.animation = "micPulse 1.5s infinite";
+    textArea.placeholder = "Listening...";
+  };
+
+  recognition.onresult = (event) => {
+    let transcript = "";
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+      transcript += event.results[i][0].transcript;
+    }
+    const currentVal = textArea.value.trim();
+    textArea.value = currentVal ? currentVal + " " + transcript : transcript;
+    updateCharCounter(textArea.value.length);
+  };
+
+  recognition.onerror = (event) => {
+    console.warn("Speech Recognition Error:", event.error);
+    stopRecording();
+  };
+
+  recognition.onend = () => {
+    stopRecording();
+  };
+
+  function stopRecording() {
+    isRecording = false;
+    micBtn.style.background = "var(--surface-color, rgba(0, 0, 0, 0.4))";
+    micBtn.style.animation = "none";
+    textArea.placeholder = "Enter English (or Hinglish) series description here...\\n\\nExample: A gripping detective thriller set in the rain-soaked streets of Mumbai, where a brilliant investigator chases a ghost from his past.";
+  }
+
+  micBtn.addEventListener("click", () => {
+    if (isRecording) {
+      recognition.stop();
+    } else {
+      recognition.start();
+    }
+  });
+}
