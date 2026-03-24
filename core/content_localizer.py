@@ -58,6 +58,7 @@ from core.translator         import IndicTranslator
 from core.hinglish_handler   import HinglishHandler
 from core.transliterator     import IndicTransliterator
 from core.tts_engine         import IndicTTSEngine
+from core.haptic_engine      import HapticEngine
 
 # ─── Load config files ────────────────────────────────────────────────────────
 _CONFIG_DIR = _ROOT / "config"
@@ -103,6 +104,7 @@ class ContentLocalizer:
         self.hinglish      = HinglishHandler(mode="dict", translator=self.translator)
         self.transliterator = IndicTransliterator()
         self.tts           = IndicTTSEngine() if enable_tts else None
+        self.haptic_engine  = HapticEngine()
         self.enable_tts    = enable_tts
 
         print("✅ Engine ready.\n")
@@ -203,6 +205,9 @@ class ContentLocalizer:
             else:
                 print(f"   ⚠️  TTS failed: {audio_result['error']}")
 
+        # ── Step 6.5: Haptics ─────────────────────────────────────────────────
+        haptic_data = self.haptic_engine.process_text_to_haptics(translated_text, target_lang)
+
         # ── Step 7: Build language metadata ──────────────────────────────────
         lang_meta = LANGUAGES_CONFIG.get("supported_languages", {}).get(target_lang, {})
 
@@ -225,6 +230,7 @@ class ContentLocalizer:
             "audio_path":         audio_result["audio_path"] if audio_result else None,
             "audio_engine":       audio_result["engine"] if audio_result else None,
             "detection":          detection,
+            "haptics":            haptic_data,
         }
 
     def localize_batch(

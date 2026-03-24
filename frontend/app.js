@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   wireExampleChips();
   wireCharCounter();
   checkAPIStatus();
+  wireHapticsPlayer();
 });
 
 // ── Language selector grid ─────────────────────────────────────────────────────
@@ -261,6 +262,28 @@ function renderOutput(data) {
     data.audio_engine ? `<span class="engine-tag good">Audio: ${data.audio_engine}</span>` : "",
   ].join("");
 
+  // Store haptic data globally to play it
+  window.currentHaptics = data.haptics || null;
+  
+  // Haptics player
+  if (data.haptics && data.haptics.length > 0) {
+    show("haptics-player");
+    const vis = el("haptics-visualizer");
+    vis.innerHTML = "";
+    data.haptics.forEach((h, i) => {
+      const span = document.createElement("span");
+      span.id = `haptic-word-${i}`;
+      span.style.padding = "2px 6px";
+      span.style.borderRadius = "4px";
+      span.style.background = "rgba(255,255,255,0.05)";
+      span.style.transition = "background 0.1s, transform 0.1s, color 0.1s";
+      span.textContent = h.word;
+      vis.appendChild(span);
+    });
+  } else {
+    hide("haptics-player");
+  }
+
   // Audio player
   if (data.audio_path) {
     const filename = data.audio_path.split(/[\\/]/).pop();
@@ -292,6 +315,48 @@ async function copyOutput() {
     btn.textContent = "✅ Copied!";
     setTimeout(() => btn.textContent = "📋 Copy", 2000);
   } catch { /* ignore */ }
+}
+
+// ── Haptics Player ─────────────────────────────────────────────────────────────
+function wireHapticsPlayer() {
+  const btn = document.getElementById("play-haptics-btn");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    if (!window.currentHaptics || window.currentHaptics.length === 0) return;
+    playHapticsSequence(window.currentHaptics);
+  });
+}
+
+function playHapticsSequence(hapticsData) {
+  let currentTime = 0;
+  
+  hapticsData.forEach((h, i) => {
+    setTimeout(() => {
+      // Try to vibrate device (only works on mobile generally)
+      if (navigator.vibrate) {
+        navigator.vibrate(h.pattern);
+      }
+      
+      // Visual feedback
+      const span = el(`haptic-word-${i}`);
+      if (span) {
+        span.style.background = "var(--saffron)";
+        span.style.color = "#000";
+        span.style.transform = "scale(1.15)";
+        
+        // Duration of current vibration pattern
+        const duration = h.pattern.reduce((a, b) => a + b, 0);
+        setTimeout(() => {
+            span.style.background = "rgba(255,255,255,0.05)";
+            span.style.color = "";
+            span.style.transform = "scale(1)";
+        }, duration || 100);
+      }
+    }, currentTime);
+    
+    const duration = h.pattern.reduce((a, b) => a + b, 0);
+    currentTime += duration + h.delay_after;
+  });
 }
 
 // ── UI helpers ─────────────────────────────────────────────────────────────────
