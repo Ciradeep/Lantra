@@ -8,6 +8,7 @@ from .hinglish_handler   import HinglishHandler
 from .transliterator     import IndicTransliterator
 from .tts_engine         import IndicTTSEngine
 from .stt_engine         import IndicSTTEngine
+from .haptic_engine      import HapticEngine
 from .content_localizer  import ContentLocalizer
 
 __all__ = [
@@ -17,5 +18,6 @@ __all__ = [
     "IndicTransliterator",
     "IndicTTSEngine",
     "IndicSTTEngine",
+    "HapticEngine",
     "ContentLocalizer",
 ]
