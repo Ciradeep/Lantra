@@ -1,0 +1,128 @@
+{
+  "supported_languages": {
+    "hi": {
+      "name": "Hindi",
+      "native_name": "हिन्दी",
+      "script": "Devanagari",
+      "itrans_code": "hi",
+      "bhashini_code": "hi",
+      "google_tts_lang": "hi",
+      "unicode_range": "U+0900–U+097F",
+      "sample_greeting": "नमस्ते",
+      "cultural_register": "formal_hindi",
+      "romanization_scheme": "IAST"
+    },
+    "ta": {
+      "name": "Tamil",
+      "native_name": "தமிழ்",
+      "script": "Tamil",
+      "itrans_code": "ta",
+      "bhashini_code": "ta",
+      "google_tts_lang": "ta",
+      "unicode_range": "U+0B80–U+0BFF",
+      "sample_greeting": "வணக்கம்",
+      "cultural_register": "formal_tamil",
+      "romanization_scheme": "ISO_15919"
+    },
+    "te": {
+      "name": "Telugu",
+      "native_name": "తెలుగు",
+      "script": "Telugu",
+      "itrans_code": "te",
+      "bhashini_code": "te",
+      "google_tts_lang": "te",
+      "unicode_range": "U+0C00–U+0C7F",
+      "sample_greeting": "నమస్కారం",
+      "cultural_register": "formal_telugu",
+      "romanization_scheme": "ISO_15919"
+    },
+    "bn": {
+      "name": "Bengali",
+      "native_name": "বাংলা",
+      "script": "Bengali",
+      "itrans_code": "bn",
+      "bhashini_code": "bn",
+      "google_tts_lang": "bn",
+      "unicode_range": "U+0980–U+09FF",
+      "sample_greeting": "নমস্কার",
+      "cultural_register": "formal_bengali",
+      "romanization_scheme": "ISO_15919"
+    },
+    "mr": {
+      "name": "Marathi",
+      "native_name": "मराठी",
+      "script": "Devanagari",
+      "itrans_code": "mr",
+      "bhashini_code": "mr",
+      "google_tts_lang": "mr",
+      "unicode_range": "U+0900–U+097F",
+      "sample_greeting": "नमस्कार",
+      "cultural_register": "formal_marathi",
+      "romanization_scheme": "IAST"
+    },
+    "gu": {
+      "name": "Gujarati",
+      "native_name": "ગુજરાતી",
+      "script": "Gujarati",
+      "itrans_code": "gu",
+      "bhashini_code": "gu",
+      "google_tts_lang": "gu",
+      "unicode_range": "U+0A80–U+0AFF",
+      "sample_greeting": "નમસ્તે",
+      "cultural_register": "formal_gujarati",
+      "romanization_scheme": "ISO_15919"
+    },
+    "kn": {
+      "name": "Kannada",
+      "native_name": "ಕನ್ನಡ",
+      "script": "Kannada",
+      "itrans_code": "kn",
+      "bhashini_code": "kn",
+      "google_tts_lang": "kn",
+      "unicode_range": "U+0C80–U+0CFF",
+      "sample_greeting": "ನಮಸ್ಕಾರ",
+      "cultural_register": "formal_kannada",
+      "romanization_scheme": "ISO_15919"
+    },
+    "ml": {
+      "name": "Malayalam",
+      "native_name": "മലയാളം",
+      "script": "Malayalam",
+      "itrans_code": "ml",
+      "bhashini_code": "ml",
+      "google_tts_lang": "ml",
+      "unicode_range": "U+0D00–U+0D7F",
+      "sample_greeting": "നമസ്കാരം",
+      "cultural_register": "formal_malayalam",
+      "romanization_scheme": "ISO_15919"
+    },
+    "pa": {
+      "name": "Punjabi",
+      "native_name": "ਪੰਜਾਬੀ",
+      "script": "Gurmukhi",
+      "itrans_code": "pa",
+      "bhashini_code": "pa",
+      "google_tts_lang": "pa",
+      "unicode_range": "U+0A00–U+0A7F",
+      "sample_greeting": "ਸਤ ਸ੍ਰੀ ਅਕਾਲ",
+      "cultural_register": "formal_punjabi",
+      "romanization_scheme": "ISO_15919"
+    },
+    "or": {
+      "name": "Odia",
+      "native_name": "ଓଡ଼ିଆ",
+      "script": "Odia",
+      "itrans_code": "or",
+      "bhashini_code": "or",
+      "google_tts_lang": "or",
+      "unicode_range": "U+0B00–U+0B7F",
+      "sample_greeting": "ନମସ୍କାର",
+      "cultural_register": "formal_odia",
+      "romanization_scheme": "ISO_15919"
+    }
+  },
+  "default_language": "hi",
+  "hinglish_detection_threshold": 0.3,
+  "low_resource_languages": ["or", "sa", "kok", "doi", "mni"],
+  "rtl_languages": []
+}

@@ -1,0 +1,64 @@
+{
+  "series": [
+    {
+      "id": "SRS001",
+      "title": "The Midnight Detective",
+      "description_en": "A gripping detective thriller set in the rain-soaked streets of Mumbai, where a brilliant but troubled investigator chases a ghost from his past.",
+      "genre": "thriller",
+      "language": "en",
+      "target_languages": ["hi", "ta", "te", "bn", "mr"],
+      "cultural_tags": ["urban", "crime", "suspense", "police"],
+      "rating": "TV-MA",
+      "seasons": 2,
+      "episodes": 18
+    },
+    {
+      "id": "SRS002",
+      "title": "Monsoon Hearts",
+      "description_en": "A heartwarming family drama about three generations of a Tamil household navigating love, tradition, and modernity in present-day Chennai.",
+      "genre": "drama",
+      "language": "en",
+      "target_languages": ["ta", "hi", "te", "ml", "kn"],
+      "cultural_tags": ["family", "tradition", "Chennai", "multi-generational"],
+      "rating": "TV-G",
+      "seasons": 1,
+      "episodes": 24
+    },
+    {
+      "id": "SRS003",
+      "title": "The Iron Road",
+      "description_en": "An action-packed adventure following a fearless railway engineer who uncovers a massive conspiracy that threatens national security during the British Raj.",
+      "genre": "action",
+      "language": "en",
+      "target_languages": ["hi", "bn", "mr", "gu", "pa"],
+      "cultural_tags": ["historical", "adventure", "railways", "independence"],
+      "rating": "TV-14",
+      "seasons": 3,
+      "episodes": 30
+    },
+    {
+      "id": "SRS004",
+      "title": "Strings of the Soul",
+      "description_en": "A young woman from rural Bengal discovers her extraordinary musical talent and fights against all odds to make it to the national stage.",
+      "genre": "drama",
+      "language": "en",
+      "target_languages": ["bn", "hi", "or", "ta"],
+      "cultural_tags": ["music", "classical", "rural", "empowerment", "coming-of-age"],
+      "rating": "TV-G",
+      "seasons": 1,
+      "episodes": 13
+    },
+    {
+      "id": "SRS005",
+      "title": "Digital Desi",
+      "description_en": "A comedy series following five young software engineers from different states of India sharing a flat in Bengaluru, navigating startups, relationships, and cultural clashes.",
+      "genre": "comedy",
+      "language": "en",
+      "target_languages": ["kn", "hi", "ta", "te", "ml"],
+      "cultural_tags": ["urban", "startup", "comedy", "friendship", "Bengaluru", "multi-cultural"],
+      "rating": "TV-PG",
+      "seasons": 2,
+      "episodes": 20
+    }
+  ]
+}

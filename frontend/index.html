@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LANTRA — AI-powered Indian language content localization platform. Translate and culturally adapt any digital content into 10 Indic languages." />
+  <title>मातृभाषा प्रथम | LANTRA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&family=Noto+Sans+Telugu:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+<!-- ── HEADER ──────────────────────────────────────────────────────────────── -->
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <div class="logo-icon">🇮🇳</div>
+      <div class="logo-text">
+        <span class="logo-primary">मातृभाषा प्रथम</span>
+        <span class="logo-secondary">LANTRA</span>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#localizer" class="nav-link active">Localizer</a>
+      <a href="#architecture" class="nav-link">Architecture</a>
+      <a href="#languages" class="nav-link">Languages</a>
+      <span class="status-badge" id="status-badge">⚡ API Online</span>
+    </nav>
+  </div>
+</header>
+
+<!-- ── HERO ────────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-scripts">
+      <span class="script-float" style="--delay:0s">अ</span>
+      <span class="script-float" style="--delay:0.5s">த</span>
+      <span class="script-float" style="--delay:1s">అ</span>
+      <span class="script-float" style="--delay:1.5s">আ</span>
+      <span class="script-float" style="--delay:2s">ਅ</span>
+      <span class="script-float" style="--delay:2.5s">ઓ</span>
+      <span class="script-float" style="--delay:3s">ಅ</span>
+      <span class="script-float" style="--delay:3.5s">ആ</span>
+    </div>
+    <h1 class="hero-title">
+      Experience Seamless Localization with <br />
+      <span class="gradient-text">LANTRA</span>
+    </h1>
+    <p class="hero-sub">
+      Transform any digital content into culturally-authentic Indian language experiences.
+      Powered by <strong>IndicTrans2</strong>, <strong>Bhashini</strong>, and multilingual AI.
+    </p>
+    <div class="hero-pills">
+      <span class="pill">10 Languages</span>
+      <span class="pill">22 Indic Scripts</span>
+      <span class="pill">TTS Audio</span>
+      <span class="pill">Hinglish AI</span>
+      <span class="pill">Cultural Tone</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAIN LOCALIZER ──────────────────────────────────────────────────────── -->
+<section class="localizer" id="localizer">
+  <div class="container">
+    <div class="tool-card">
+
+      <!-- Input Panel -->
+      <div class="panel input-panel">
+        <div class="panel-header">
+          <h2 class="panel-title">📥 Input Content</h2>
+          <div class="input-controls">
+            <select id="genre-select" class="select-control" title="Content Genre">
+              <option value="drama">🎭 Drama</option>
+              <option value="thriller">🔪 Thriller</option>
+              <option value="romance">💞 Romance</option>
+              <option value="action">⚡ Action</option>
+              <option value="comedy">😂 Comedy</option>
+              <option value="horror">👻 Horror</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:flex; gap: 10px; margin-bottom: 1rem;">
+          <button id="tab-text" class="btn-primary" onclick="switchTab('text')" style="flex:1; padding: 0.5rem">✍️ Text</button>
+          <button id="tab-video" class="btn-primary" onclick="switchTab('video')" style="background:var(--card-bg); color:var(--text-1); flex:1; padding: 0.5rem">🎥 Video</button>
+        </div>
+
+        <div id="text-input-section">
+          <textarea
+            id="input-text"
+            class="text-area"
+            placeholder="Enter English (or Hinglish) series description here...&#10;&#10;Example: A gripping detective thriller set in the rain-soaked streets of Mumbai, where a brilliant investigator chases a ghost from his past."
+            rows="7"
+            maxlength="2000"
+          ></textarea>
+          <div class="char-count" id="char-counter-container"><span id="char-counter">0</span> / 2000</div>
+        </div>
+
+        <div id="video-input-section" style="display:none; padding:1.5rem; border:1px dashed var(--saffron); border-radius:12px; margin-bottom:1rem; text-align:center;">
+          <p style="margin-bottom:0.8rem; color:var(--text-2);">Upload an MP4 video.<br/>We'll transcribe the audio and translate the text.</p>
+          <input type="file" id="video-file-input" accept="video/mp4,video/webm" style="color:var(--text-1); width: 100%" />
+          <div style="margin-top:0.8rem; text-align:left;">
+            Source Language: 
+            <select id="video-source-lang" class="select-control" style="padding:0.3rem">
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+              <option value="ta">Tamil</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Quick examples -->
+        <div class="examples-row">
+          <span class="examples-label">Quick examples:</span>
+          <button class="example-chip" data-example="thriller">Mumbai Thriller</button>
+          <button class="example-chip" data-example="drama">Tamil Family Drama</button>
+          <button class="example-chip" data-example="hinglish">Hinglish</button>
+          <button class="example-chip" data-example="bengali">Bengali Music</button>
+        </div>
+
+        <!-- Language selector -->
+        <div class="lang-grid" id="lang-grid">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Audio toggle -->
+        <label class="toggle-row">
+          <input type="checkbox" id="audio-toggle" checked />
+          <span class="toggle-slider"></span>
+          <span>Generate TTS Audio</span>
+        </label>
+
+        <button id="localize-btn" class="btn-primary" onclick="doLocalize()">
+          <span class="btn-icon">🚀</span>
+          Localize Now
+        </button>
+      </div>
+
+      <!-- Output Panel -->
+      <div class="panel output-panel">
+        <div class="panel-header">
+          <h2 class="panel-title">🌐 Localized Output</h2>
+          <button class="btn-copy" id="copy-btn" onclick="copyOutput()" style="display:none">📋 Copy</button>
+        </div>
+
+        <div id="output-placeholder" class="output-placeholder">
+          <div class="placeholder-icon">🗺️</div>
+          <p>Your localized content will appear here.<br />Select a language and click <strong>Localize Now</strong>.</p>
+        </div>
+
+        <div id="output-result" class="output-result" style="display:none">
+          <!-- Language flag + name -->
+          <div class="output-lang-tag" id="output-lang-tag"></div>
+
+          <!-- Detected language info -->
+          <div class="meta-row" id="meta-detection"></div>
+
+          <!-- Main translated text -->
+          <div class="translated-box" id="translated-text"></div>
+
+          <!-- Romanized (pronunciation) -->
+          <div class="romanized-box" id="romanized-text" style="display:none">
+            <span class="romanized-label">📖 Pronunciation (ITRANS):</span>
+            <span id="romanized-content"></span>
+          </div>
+
+          <!-- Engine badge -->
+          <div class="engine-row" id="engine-badge"></div>
+
+          <!-- Audio Player -->
+          <div class="audio-player" id="audio-player" style="display:none">
+            <span class="audio-icon">🔊</span>
+            <audio id="audio-element" controls></audio>
+            <a id="audio-download" download class="audio-download-btn">⬇️ Download</a>
+          </div>
+
+          <!-- Cultural note -->
+          <details class="cultural-note-details" id="cultural-details">
+            <summary>🎨 Cultural Adaptation Note</summary>
+            <p id="cultural-note-text"></p>
+          </details>
+        </div>
+
+        <!-- Loading state -->
+        <div id="loading-state" class="loading-state" style="display:none">
+          <div class="spinner"></div>
+          <p>Translating & adapting content…</p>
+          <div class="loading-steps" id="loading-steps">
+            <span class="step" id="step-detect">🔍 Detecting language</span>
+            <span class="step" id="step-translate">🌐 Translating</span>
+            <span class="step" id="step-culture">🎨 Applying cultural tone</span>
+            <span class="step" id="step-audio">🔊 Generating audio</span>
+          </div>
+        </div>
+
+        <!-- Error state -->
+        <div id="error-state" class="error-state" style="display:none">
+          <div class="error-icon">⚠️</div>
+          <p id="error-message"></p>
+          <p class="error-hint">Make sure the FastAPI server is running:<br />
+            <code>uvicorn api.server:app --reload --port 8001</code>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ARCHITECTURE SECTION ────────────────────────────────────────────────── -->
+<section class="architecture" id="architecture">
+  <div class="container">
+    <h2 class="section-title">⚙️ System Architecture</h2>
+    <p class="section-sub">A 5-layer pipeline built for scale, accuracy, and cultural authenticity.</p>
+    <div class="arch-grid">
+      <div class="arch-card">
+        <div class="arch-icon">🖥️</div>
+        <h3>Frontend</h3>
+        <ul>
+          <li>Vanilla HTML/CSS/JS</li>
+          <li>Indic Unicode fonts</li>
+          <li>Inline audio playback</li>
+          <li>Multi-language selector</li>
+        </ul>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-card">
+        <div class="arch-icon">⚡</div>
+        <h3>API Layer</h3>
+        <ul>
+          <li>FastAPI (Python)</li>
+          <li>REST + Swagger docs</li>
+          <li>CORS middleware</li>
+          <li>Static file serving</li>
+        </ul>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-card highlight">
+        <div class="arch-icon">🧠</div>
+        <h3>AI/NLP Core</h3>
+        <ul>
+          <li>IndicTrans2 (HuggingFace)</li>
+          <li>langdetect + Unicode</li>
+          <li>Hinglish code-switch</li>
+          <li>indic-transliteration</li>
+        </ul>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-card">
+        <div class="arch-icon">🔊</div>
+        <h3>Speech Layer</h3>
+        <ul>
+          <li>gTTS (online TTS)</li>
+          <li>pyttsx3 (offline)</li>
+          <li>Bhashini API (stub)</li>
+          <li>Google Speech STT</li>
+        </ul>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-card">
+        <div class="arch-icon">🗄️</div>
+        <h3>Data Layer</h3>
+        <ul>
+          <li>Unicode UTF-8 JSON</li>
+          <li>Audio file storage</li>
+          <li>Language configs</li>
+          <li>Cultural prompt DB</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LANGUAGES GRID ──────────────────────────────────────────────────────── -->
+<section class="languages-section" id="languages">
+  <div class="container">
+    <h2 class="section-title">🗣️ Supported Languages</h2>
+    <div class="languages-grid" id="languages-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ── TECH STACK ──────────────────────────────────────────────────────────── -->
+<section class="tech-stack">
+  <div class="container">
+    <h2 class="section-title">🔬 Tech Stack</h2>
+    <div class="tech-grid">
+      <div class="tech-card"><span class="tech-cat">Translation</span><span class="tech-name">AI4Bharat IndicTrans2</span><span class="tech-note">Best-in-class Indic NMT</span></div>
+      <div class="tech-card"><span class="tech-cat">Translation Fallback</span><span class="tech-name">deep-translator</span><span class="tech-note">Google Translate API wrapper</span></div>
+      <div class="tech-card"><span class="tech-cat">Language Detection</span><span class="tech-name">langdetect + Unicode</span><span class="tech-note">Fast + Hinglish aware</span></div>
+      <div class="tech-card"><span class="tech-cat">Transliteration</span><span class="tech-name">indic-transliteration</span><span class="tech-note">22 scripts, ITRANS/IAST/ISO</span></div>
+      <div class="tech-card"><span class="tech-cat">TTS Online</span><span class="tech-name">gTTS (Google)</span><span class="tech-note">10+ Indic language voices</span></div>
+      <div class="tech-card"><span class="tech-cat">TTS Offline</span><span class="tech-name">pyttsx3</span><span class="tech-note">System TTS, no internet</span></div>
+      <div class="tech-card"><span class="tech-cat">STT</span><span class="tech-name">SpeechRecognition + Vosk</span><span class="tech-note">Online + offline Indic ASR</span></div>
+      <div class="tech-card"><span class="tech-cat">API Framework</span><span class="tech-name">FastAPI + Uvicorn</span><span class="tech-note">Async, auto Swagger docs</span></div>
+      <div class="tech-card"><span class="tech-cat">Production TTS/STT</span><span class="tech-name">Bhashini (MeitY)</span><span class="tech-note">Gov. dialectal AI — stub ready</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <p>🇮🇳 <strong>LANTRA</strong> — Samsung Indic AI Platform</p>
+    <p class="footer-sub">Built with IndicTrans2 · Bhashini · HuggingFace · FastAPI</p>
+    <p class="footer-copy">Languages: हिन्दी • தமிழ் • తెలుగు • বাংলা • मराठी • ગુજરાતી • ಕನ್ನಡ • മലയാളം • ਪੰਜਾਬੀ • ଓଡ଼ିଆ</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

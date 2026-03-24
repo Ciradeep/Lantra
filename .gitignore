@@ -1,0 +1,25 @@
+# Python / Env
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.env
+venv/
+env/
+
+# Output Data
+data/audio_output/*.mp3
+data/audio_output/*.wav
+*.mp4
+
+# IDE / System
+.vscode/
+.idea/
+.DS_Store
+*.txt
+
+# Ignore generated test outputs
+verify_output.txt
+fails.txt
+get_fails.py
+debug_failing.py

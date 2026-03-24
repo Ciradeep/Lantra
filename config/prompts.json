@@ -1,0 +1,147 @@
+{
+  "_comment": "LLM prompt templates for culturally-aware content rewriting per language.",
+  "system_base": "You are a professional content localizer specializing in Indian languages. Your task is to take a translated text and rewrite it so it reads naturally and culturally authentically for a native speaker of the target language. Preserve the meaning, genre tone, and emotional weight of the original. Do NOT translate back to English.",
+
+  "cultural_rewrites": {
+    "hi": {
+      "tone_instruction": "Use warm, cinematic Hindi. Prefer Hindustani vocabulary over borrowed English terms where possible. Use 'आप' (aap) for honorific register. Evoke emotions with idioms familiar to North Indian audiences.",
+      "genre_notes": {
+        "thriller":  "शहरी रहस्य और तनाव को रेखांकित करें।",
+        "romance":   "भावनाओं की गहराई और रिश्तों की मिठास दर्शाएं।",
+        "action":    "ऊर्जा और गति का अनुभव कराएं।",
+        "drama":     "पारिवारिक और सामाजिक मूल्यों को उजागर करें।",
+        "comedy":    "हास्य और व्यंग्य को हल्के-फुल्के अंदाज़ में प्रस्तुत करें।",
+        "horror":    "भय और रोमांच की अनुभूति जगाएं।"
+      },
+      "example_prefix": "एक ऐसी कहानी जो..."
+    },
+    "ta": {
+      "tone_instruction": "Use literary Tamil (centamil) for formal descriptions, but allow colloquial expressions for drama/comedy. Incorporate cultural references to Tamil cinema (Kollywood), temple traditions, or family bonds where appropriate.",
+      "genre_notes": {
+        "thriller": "மர்மம் மற்றும் பரபரப்பை வலியுறுத்துங்கள்.",
+        "romance":  "காதலின் ஆழத்தையும் பாசத்தையும் சித்தரியுங்கள்.",
+        "action":   "வீரம் மற்றும் ஆற்றலை வெளிப்படுத்துங்கள்.",
+        "drama":    "குடும்பம் மற்றும் சமூக விழுமியங்களை உணர்த்துங்கள்.",
+        "comedy":   "நகைச்சுவை மற்றும் வாழ்க்கை நையாண்டிகளை வெளிக்கொண்டு வாருங்கள்.",
+        "horror":   "திகில் மற்றும் மர்மத்தை உணர்த்துங்கள்."
+      },
+      "example_prefix": "ஒரு கதை, இது..."
+    },
+    "te": {
+      "tone_instruction": "Use graceful literary Telugu. Reference Andhra/Telangana cultural sensibilities. Telugu cinema traditions (Tollywood) can inform dramatic phrasing.",
+      "genre_notes": {
+        "thriller": "రహస్యం మరియు ఉత్కంఠను నొక్కి చెప్పండి.",
+        "romance":  "ప్రేమ మరియు అనురాగాన్ని వ్యక్తపరచండి.",
+        "action":   "శక్తి మరియు వేగాన్ని చిత్రించండి.",
+        "drama":    "కుటుంబ విలువలు మరియు సామాజిక బంధాలను వెల్లడించండి.",
+        "comedy":   "హాస్యం మరియు చమత్కారాన్ని చిత్రీకరించండి.",
+        "horror":   "భీతి మరియు రహస్యమయ వాతావరణాన్ని కల్పించండి."
+      },
+      "example_prefix": "ఒక కథ, ఇది..."
+    },
+    "bn": {
+      "tone_instruction": "Use elegant, literary Bengali (Shuddhô Bangla). Draw on Bengal's rich literary and cultural heritage. References to Rabindranath Tagore's style of emotional prose are welcome for drama.",
+      "genre_notes": {
+        "thriller": "রহস্য এবং উত্তেজনার উপর জোর দিন।",
+        "romance":  "প্রেম এবং ভালোবাসার গভীরতা প্রকাশ করুন।",
+        "action":   "শক্তি এবং গতির অনুভূতি জাগান।",
+        "drama":    "পারিবারিক মূল্যবোধ এবং সামাজিক বন্ধন প্রকাশ করুন।",
+        "comedy":   "হাস্যরস এবং ব্যঙ্গ-বিদ্রূপকে মৃদুভাবে তুলে ধরুন।",
+        "horror":   "ভয় ও রহস্যের আবহ তৈরি করুন।"
+      },
+      "example_prefix": "একটি গল্প, যা..."
+    },
+    "mr": {
+      "tone_instruction": "Use standard Marathi with a Pune/Mumbai cultural flavor. Reference Maharashtrian traditions, festivals like Ganesh Chaturthi, and Marathi cinema (Marathi films) where contextually relevant.",
+      "genre_notes": {
+        "thriller": "रहस्य आणि तणाव यावर भर द्या.",
+        "romance":  "प्रेम आणि नात्याची खोली दाखवा.",
+        "action":   "ऊर्जा आणि वेगाची अनुभूती द्या.",
+        "drama":    "कौटुंबिक मूल्ये आणि सामाजिक बंध दर्शवा.",
+        "comedy":   "विनोद आणि उपहास हलक्या हाताने मांडा.",
+        "horror":   "भीती आणि रहस्याचे वातावरण निर्माण करा."
+      },
+      "example_prefix": "एक कथा जी..."
+    },
+    "gu": {
+      "tone_instruction": "Use standard Gujarati with a warm, community-oriented tone. Reference Gujarati cultural values like entrepreneurship, festivals (Navratri, Diwali), and family bonds.",
+      "genre_notes": {
+        "thriller": "રહસ્ય અને ઉત્કંઠા પર ભાર મૂકો.",
+        "romance":  "પ્રેમ અને સ્નેહની ઊંડાઈ દર્શાવો.",
+        "action":   "ઊર્જા અને ઝડપ અનુભવ કરાવો.",
+        "drama":    "પારિવારિક મૂલ્યો અને સામાજિક સંબંધ પ્રગટ કરો.",
+        "comedy":   "હળવા મૂડમાં હાસ્ય અને આનંદ રજૂ કરો.",
+        "horror":   "ભય અને ભૂતિયા વાતાવરણ ઊભું કરો."
+      },
+      "example_prefix": "એક કથા જે..."
+    },
+    "kn": {
+      "tone_instruction": "Use Kannada with a refined, literary tone. Draw on Karnataka's rich Kannada film (Sandalwood) tradition, classical literature, and regional cultural values.",
+      "genre_notes": {
+        "thriller": "ರಹಸ್ಯ ಮತ್ತು ಉದ್ವಿಗ್ನತೆಯನ್ನು ಒತ್ತಿ ಹೇಳಿ.",
+        "romance":  "ಪ್ರೀತಿ ಮತ್ತು ಮಮತೆಯ ಆಳವನ್ನು ಚಿತ್ರಿಸಿ.",
+        "action":   "ಶಕ್ತಿ ಮತ್ತು ವೇಗವನ್ನು ತೋರಿಸಿ.",
+        "drama":    "ಕೌಟುಂಬಿಕ ಮೌಲ್ಯಗಳು ಮತ್ತು ಸಾಮಾಜಿಕ ಬಾಂಧವ್ಯವನ್ನು ಬಿಚ್ಚಿಡಿ.",
+        "comedy":   "ಹಾಸ್ಯ ಮತ್ತು ವ್ಯಂಗ್ಯವನ್ನು ಲಘುವಾಗಿ ಮಂಡಿಸಿ.",
+        "horror":   "ಭಯ ಮತ್ತು ರಹಸ್ಯದ ವಾತಾವರಣ ಸೃಷ್ಟಿಸಿ."
+      },
+      "example_prefix": "ಒಂದು ಕಥೆ, ಅದು..."
+    },
+    "ml": {
+      "tone_instruction": "Use Malayalam with an expressive, literary tone. Reference Kerala's rich cultural heritage, classical arts (Kathakali, Mohiniyattam), and Malayalam cinema traditions.",
+      "genre_notes": {
+        "thriller": "രഹസ്യം, ഉദ്വേഗം എന്നിവ ഊന്നിപ്പറയുക.",
+        "romance":  "പ്രണയത്തിന്റെ ആഴം, ബന്ധത്തിന്റെ മാധുര്യം ചിത്രീകരിക്കുക.",
+        "action":   "ഊർജ്ജം, വേഗം എന്നിവ അനുഭവിപ്പിക്കുക.",
+        "drama":    "കുടുംബ മൂല്യങ്ങളും സാമൂഹ്യ ബന്ധങ്ങളും വ്യക്തമാക്കുക.",
+        "comedy":   "ഹാസ്യവും ലഘൂകരണവും സ്‌നേഹപൂർവം അവതരിപ്പിക്കുക.",
+        "horror":   "ഭയവും രഹസ്യ അന്തരീക്ഷവും ഉണ്ടാക്കുക."
+      },
+      "example_prefix": "ഒരു കഥ, ഇത്..."
+    },
+    "pa": {
+      "tone_instruction": "Use Punjabi with a vibrant, warm, and community-spirited tone. Draw on Punjabi folk traditions, Bhangra culture, and the warmth of Punjab's storytelling.",
+      "genre_notes": {
+        "thriller": "ਰਹੱਸ ਅਤੇ ਤਣਾਅ ਨੂੰ ਉਭਾਰੋ।",
+        "romance":  "ਪਿਆਰ ਅਤੇ ਮੁਹੱਬਤ ਦੀ ਡੂੰਘਾਈ ਦਿਖਾਓ।",
+        "action":   "ਊਰਜਾ ਅਤੇ ਤੇਜ਼ੀ ਦਾ ਅਹਿਸਾਸ ਕਰਾਓ।",
+        "drama":    "ਪਰਿਵਾਰ ਅਤੇ ਰਿਸ਼ਤਿਆਂ ਦੀਆਂ ਕਦਰਾਂ-ਕੀਮਤਾਂ ਜ਼ਾਹਿਰ ਕਰੋ।",
+        "comedy":   "ਹਾਸੇ ਅਤੇ ਖੁਸ਼ੀ ਨੂੰ ਦਿਲਕਸ਼ ਢੰਗ ਨਾਲ ਪੇਸ਼ ਕਰੋ।",
+        "horror":   "ਡਰ ਅਤੇ ਰਹੱਸ ਦਾ ਮਾਹੌਲ ਬਣਾਓ।"
+      },
+      "example_prefix": "ਇੱਕ ਕਹਾਣੀ ਜੋ..."
+    },
+    "or": {
+      "tone_instruction": "Use standard Odia with a respectful, literary tone. Reference Odisha's rich cultural heritage, classical dance (Odissi), and regional traditions.",
+      "genre_notes": {
+        "thriller": "ରହସ୍ୟ ଏବଂ ଉତ୍ତେଜନାକୁ ଜୋର ଦିଅନ୍ତୁ।",
+        "romance":  "ପ୍ରେମ ଏବଂ ସ୍ନେହର ଗଭୀରତା ଦର୍ଶାନ୍ତୁ।",
+        "action":   "ଶକ୍ତି ଏବଂ ଗତିର ଅନୁଭୂତି ଦିଅନ୍ତୁ।",
+        "drama":    "ପାରିବାରିକ ମୂଲ୍ୟ ଏବଂ ସାମାଜିକ ବନ୍ଧନ ପ୍ରକଟ କରନ୍ତୁ।",
+        "comedy":   "ହାସ୍ୟ ଏବଂ ହାଲ୍କା ମୁଡ ଉପସ୍ଥାପନ କରନ୍ତୁ।",
+        "horror":   "ଭୟ ଏବଂ ରହସ୍ୟ ପରିବେଶ ସୃଷ୍ଟି କରନ୍ତୁ।"
+      },
+      "example_prefix": "ଏକ କଥା ଯାହା..."
+    },
+    "default": {
+      "tone_instruction": "Translate naturally and culturally appropriately. Avoid literal, word-for-word translation. Preserve tone and emotion.",
+      "genre_notes": {
+        "thriller": "Emphasize mystery, suspense, and tension.",
+        "romance":  "Highlight emotional depth and relationships.",
+        "action":   "Convey energy, pace, and excitement.",
+        "drama":    "Focus on human connections and values.",
+        "comedy":   "Present humor and wit in a culturally resonant way.",
+        "horror":   "Create an atmosphere of fear and mystery."
+      },
+      "example_prefix": ""
+    }
+  },
+
+  "hinglish_rewrite": {
+    "instruction": "The input is in Hinglish (mixed Hindi-English). Identify English loan words that have well-known Hindi equivalents and replace them. Keep technical terms or brand names in English. Output should be predominantly Hindi with only necessary English terms retained.",
+    "examples": [
+      {"hinglish": "yeh ek amazing thriller series hai", "output": "यह एक अद्भुत रोमांचक श्रृंखला है"},
+      {"hinglish": "Detective ne murder case solve kiya", "output": "जासूस ने हत्या मामला सुलझाया"}
+    ]
+  }
+}
