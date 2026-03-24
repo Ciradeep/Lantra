@@ -347,6 +347,9 @@ function playHapticsSequence(hapticsData) {
     navigator.vibrate(fullPattern);
   }
 
+  // Fallback / PC Simulation: Play a low frequency buzzing sound (Web Audio API)
+  simulateVibrationWithAudio(hapticsData);
+
   // 2. Play the visual highlights synchronized with the pattern delays
   let currentTime = 0;
   
@@ -372,6 +375,44 @@ function playHapticsSequence(hapticsData) {
     const duration = h.pattern.reduce((a, b) => a + b, 0);
     currentTime += duration + h.delay_after;
   });
+}
+
+let audioCtx;
+function simulateVibrationWithAudio(hapticsData) {
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === "suspended") audioCtx.resume();
+    
+    const now = audioCtx.currentTime;
+    let timeOffset = 0;
+    
+    hapticsData.forEach(h => {
+      for (let i = 0; i < h.pattern.length; i++) {
+        const dur = h.pattern[i] / 1000;
+        if (i % 2 === 0) { // Vibrate phase
+          const oscillator = audioCtx.createOscillator();
+          const gainNode = audioCtx.createGain();
+          
+          oscillator.type = 'sawtooth'; 
+          oscillator.frequency.value = 60; // 60Hz rumble
+          gainNode.gain.value = 0.5; // Half volume buzz
+          
+          // Gentle fade out to avoid audio clicks
+          gainNode.gain.setTargetAtTime(0, now + timeOffset + dur - 0.01, 0.015);
+          
+          oscillator.connect(gainNode);
+          gainNode.connect(audioCtx.destination);
+          
+          oscillator.start(now + timeOffset);
+          oscillator.stop(now + timeOffset + dur);
+        }
+        timeOffset += dur;
+      }
+      timeOffset += (h.delay_after / 1000);
+    });
+  } catch (e) {
+    console.log("Audio Simulator skipped.");
+  }
 }
 
 // ── UI helpers ─────────────────────────────────────────────────────────────────
