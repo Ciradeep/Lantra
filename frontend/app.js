@@ -328,15 +328,30 @@ function wireHapticsPlayer() {
 }
 
 function playHapticsSequence(hapticsData) {
+  // 1. Build the full vibration pattern array to play immediately
+  // (Calling vibrate inside setTimeout loses the user-interaction permission)
+  let fullPattern = [];
+  hapticsData.forEach(h => {
+    fullPattern.push(...h.pattern);
+    fullPattern.push(h.delay_after);
+  });
+  
+  // Remove the trailing pause
+  if (fullPattern.length > 0) {
+    fullPattern.pop();
+  }
+  
+  // Needs to be called immediately on click
+  if (navigator.vibrate) {
+    navigator.vibrate(0); // Cancel any running vibrations
+    navigator.vibrate(fullPattern);
+  }
+
+  // 2. Play the visual highlights synchronized with the pattern delays
   let currentTime = 0;
   
   hapticsData.forEach((h, i) => {
     setTimeout(() => {
-      // Try to vibrate device (only works on mobile generally)
-      if (navigator.vibrate) {
-        navigator.vibrate(h.pattern);
-      }
-      
       // Visual feedback
       const span = el(`haptic-word-${i}`);
       if (span) {
